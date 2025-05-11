@@ -535,6 +535,12 @@ section {
     color: #f58d1f; /* لون برتقالي */
 }
 
+#features p {
+    font-size: 1.2rem; /* حجم النص */
+    color: #ddd; /* لون رمادي */
+    margin-bottom: 40px; /* مسافة أسفل النص */
+}
+
 #features .service-card {
     background: #06314a; /* خلفية زرقاء داكنة */
     border-radius: 10px; /* زوايا مستديرة */

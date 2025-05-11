@@ -5,31 +5,46 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    scroll-behavior: auto; /* إلغاء تحسين التمرير */
+    scroll-behavior: smooth; /* تحسين التمرير */
     position: relative; /* لجعل الخلفية تتحرك فوق الموقع */
     overflow: auto; /* إعادة تمكين التمرير */
     overflow-x: hidden; /* منع التمرير الأفقي */
     height: 100vh; /* جعل الصفحة تأخذ كامل ارتفاع الشاشة */
     overflow-y: auto; /* إلغاء خاصية التمرير العمودي الإجباري */
     scroll-snap-type: none; /* إلغاء خاصية التمرير السلس */
+    max-width: 100%; /* منع تجاوز العرض */
+    user-select: none; /* منع تحديد النصوص */
+    -webkit-user-drag: none; /* منع السحب على الصور */
+    -webkit-tap-highlight-color: transparent; /* إزالة تأثير النقر */
+}
+
+html, body {
+    overflow-x: hidden; /* منع التمرير الأفقي */
+    scroll-behavior: smooth; /* جعل التمرير سلسًا */
+    touch-action: manipulation; /* تحسين التفاعل على الأجهزة التي تعمل باللمس */
 }
 
 .navbar {
-    background: #06314a; /* توحيد اللون الأزرق */
-    background-image: linear-gradient(135deg, rgba(6, 49, 74, 0.2) 25%, transparent 25%, transparent 50%, rgba(6, 49, 74, 0.2) 50%, rgba(6, 49, 74, 0.2) 75%, transparent 75%, transparent); /* خطوط عشوائية */
-    background-size: 40px 40px; /* حجم الخطوط */
+    background: linear-gradient(135deg, #06314a, #084c61); /* خلفية متدرجة */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+    padding: 10px 20px; /* تقليل الحشوة */
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* تأثير عند التمرير */
+}
+
+.navbar.scrolled {
+    background: rgba(6, 49, 74, 0.9); /* خلفية شبه شفافة عند التمرير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* زيادة الظل */
 }
 
 .navbar-brand {
     color: #f58d1f; /* لون النص */
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* تكبير النص */
     transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-    color: #084c61; /* لون النص عند التحويم */
+    color: #fff; /* تغيير اللون عند التحويم */
 }
 
 .navbar-brand img {
@@ -41,11 +56,14 @@ body {
 .navbar-nav .nav-link {
     color: white; /* جعل الكلمات باللون الأبيض */
     font-weight: bold;
-    transition: color 0.3s ease; /* تأثير الانتقال */
+    font-size: 1.2rem; /* تكبير النص */
+    margin: 0 10px; /* مسافة بين الروابط */
+    transition: color 0.3s ease, transform 0.3s ease; /* تأثير عند التحويم */
 }
 
 .navbar-nav .nav-link:hover {
     color: #f58d1f; /* تغيير اللون عند التمرير */
+    transform: scale(1.1); /* تكبير الرابط عند التحويم */
 }
 
 .nav-link.active {
@@ -57,18 +75,16 @@ body {
 }
 
 .nav-btn {
-    background-color: #084c61; /* لون الزر */
-    color: #fff;
-    font-weight: bold;
-    border: none;
+    background-color: #f58d1f; /* لون برتقالي */
+    color: #fff; /* النص باللون الأبيض */
+    font-size: 1.2rem; /* حجم النص */
+    padding: 10px 20px; /* مسافة داخلية */
     border-radius: 5px; /* زوايا مستديرة */
-    padding: 10px 20px; /* مسافة داخلية أكبر */
-    transition: all 0.3s ease; /* تأثير الانتقال */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+    transition: background 0.3s ease, transform 0.3s ease; /* تأثير عند التحويم */
 }
 
 .nav-btn:hover {
-    background-color: #f58d1f; /* لون الزر عند التحويم */
+    background-color: #d9771f; /* لون برتقالي داكن */
     transform: scale(1.1); /* تكبير الزر عند التحويم */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التحويم */
 }
@@ -605,4 +621,14 @@ section {
     iframe {
         height: 200px; /* تصغير ارتفاع الخريطة */
     }
+}
+
+button, a {
+    touch-action: manipulation; /* تحسين التفاعل مع الأزرار والروابط */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* تأثير عند التفاعل */
+}
+
+button:hover, a:hover {
+    transform: scale(1.05); /* تكبير بسيط عند التحويم */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل */
 }

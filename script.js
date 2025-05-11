@@ -1,6 +1,11 @@
 // تفعيل مكتبة AOS
 document.addEventListener('DOMContentLoaded', () => {
-    AOS.init();
+    AOS.init({
+        duration: 1200, // مدة الحركة
+        easing: 'ease-in-out', // نوع الحركة
+        once: true, // تشغيل الحركة مرة واحدة فقط
+        offset: 100 // المسافة قبل بدء الحركة
+    });
 });
 
 // التمرير السلس عند النقر على روابط التنقل
@@ -11,8 +16,23 @@ document.querySelectorAll('.nav-link').forEach(link => {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 70, // تعديل المسافة لتجنب تغطية شريط التنقل
+                top: targetElement.offsetTop - 80, // تعديل المسافة لتجنب تغطية شريط التنقل
                 behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// إزالة تحسين التمرير السلس عند النقر على روابط التنقل
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.removeEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth', // التمرير السلس
+                block: 'start' // محاذاة القسم إلى الأعلى
             });
         }
     });
@@ -59,6 +79,18 @@ document.querySelectorAll('.btn').forEach(button => {
     });
     button.addEventListener('mouseleave', () => {
         button.style.transform = 'scale(1)';
+    });
+});
+
+// تحسين التفاعل مع الأزرار
+document.querySelectorAll('.btn-primary').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        button.style.transform = 'scale(1.1)';
+        button.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
+    });
+    button.addEventListener('mouseleave', () => {
+        button.style.transform = 'scale(1)';
+        button.style.boxShadow = 'none';
     });
 });
 
@@ -205,3 +237,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveLink);
 });
+
+// إضافة حركة ديناميكية للأشكال
+document.addEventListener('DOMContentLoaded', () => {
+    const shapes = document.querySelectorAll('.moving-shape');
+    shapes.forEach(shape => {
+        shape.style.animationDuration = `${Math.random() * 8 + 5}s`; // مدة حركة عشوائية بين 5-13 ثانية
+        shape.style.animationDelay = `${Math.random() * 2}s`; // تأخير عشوائي
+    });
+});
+
+// إضافة تأثيرات عند التمرير
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled'); // إضافة تأثير عند التمرير
+    } else {
+        navbar.classList.remove('scrolled'); // إزالة التأثير عند العودة للأعلى
+    }
+});
+
+// إزالة تأثيرات شريط التنقل السفلي (إن وجدت)
+// لا توجد أكواد إضافية لشريط التنقل السفلي في هذا الملف.
+
+// إزالة تأثيرات شريط التنقل الجانبي (إن وجدت)
+// لا توجد أكواد إضافية لشريط التنقل الجانبي في هذا الملف.

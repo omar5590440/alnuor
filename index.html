@@ -8,53 +8,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="BD.png"> <!-- تحديث favicon إلى لوجو الشركة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> <!-- إضافة خط Cairo -->
     <style>
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             color: #fff;
-            background: linear-gradient(135deg, #06314a, #084c61); /* خلفية متدرجة */
+            background: linear-gradient(135deg, #06314a, #084c61);
+            margin: 0;
+            padding: 0;
         }
         .navbar {
-            background: linear-gradient(90deg, #06314a, #084c61); /* خلفية متدرجة */
+            background: #06314a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
-            color: #f58d1f; /* تحديث اللون */
+            color: #f58d1f;
             font-weight: bold;
+            font-size: 1.8rem;
+        }
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 10px;
         }
         .hero-section {
             height: 100vh;
             background: linear-gradient(135deg, rgba(6, 49, 74, 0.8), rgba(8, 76, 97, 0.8)), 
-                        url('hero-image.jpg') no-repeat center center/cover; /* خلفية متدرجة مع صورة */
+                        url('hero-image.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-        }
-        .hero-section h1 {
-            font-size: 2.5rem; /* تقليل حجم النص للرؤوس */
-            color: #f58d1f; /* تحديث اللون */
-        }
-        .hero-section p {
-            font-size: 1.2rem; /* تقليل حجم النص للفقرات */
             color: #fff;
         }
-        .navbar-brand img {
-            height: 50px; /* تقليل حجم الشعار */
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #f58d1f;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
-        .product-card img {
-            height: auto; /* جعل الصور متجاوبة */
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-top: 20px;
         }
-        .product-card {
-            margin-bottom: 20px; /* إضافة مسافة بين البطاقات */
+        .btn-primary {
+            background: #f58d1f;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #d9771f;
+        }
+        section {
+            padding: 60px 0;
+        }
+        #about {
+            background: #084c61;
+            color: #fff;
+        }
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        #partners {
+            background: #06314a;
+        }
+        #partners h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f58d1f;
+        }
+        #partners img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         footer {
-            background: linear-gradient(90deg, #06314a, #084c61); /* خلفية متدرجة */
+            background: #06314a;
+            color: #fff;
             padding: 20px 0;
             text-align: center;
-            font-size: 0.9rem; /* تقليل حجم النص في الفوتر */
+            font-size: 0.9rem;
         }
-        footer a {
-            color: #f58d1f; /* تحديث اللون */
+        footer a img {
+            width: 50px;
+            height: 50px;
             margin: 0 10px;
         }
         .rotating-background {
@@ -76,12 +121,92 @@
                 transform: rotate(360deg);
             }
         }
+        /* استعلامات الوسائط للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto; /* السماح بارتفاع تلقائي */
+                padding: 20px; /* إضافة مسافة داخلية */
+            }
+            .hero-section h1 {
+                font-size: 2rem; /* تصغير حجم النص للرؤوس */
+            }
+            .hero-section p {
+                font-size: 1rem; /* تصغير حجم النص للفقرات */
+            }
+            .navbar-brand img {
+                height: 40px; /* تصغير حجم الشعار */
+            }
+            .navbar-brand span {
+                font-size: 1.2rem; /* تصغير حجم النص */
+            }
+            .product-card {
+                margin-bottom: 15px; /* تقليل المسافة بين البطاقات */
+            }
+            footer {
+                font-size: 0.8rem; /* تصغير حجم النص في الفوتر */
+            }
+            footer a img {
+                width: 40px; /* تصغير حجم الأيقونات */
+                height: 40px;
+            }
+            iframe {
+                height: 200px; /* تصغير ارتفاع الخريطة */
+            }
+            .btn {
+                font-size: 1rem; /* تصغير حجم النص في الأزرار */
+                padding: 10px 20px; /* تقليل الحشوة */
+            }
+        }
+        .moving-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: move 10s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+        .shape1 {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 99, 71, 0.7);
+            top: 10%;
+            left: 20%;
+        }
+        .shape2 {
+            width: 150px;
+            height: 150px;
+            background: rgba(135, 206, 250, 0.7);
+            top: 50%;
+            left: 70%;
+        }
+        .shape3 {
+            width: 80px;
+            height: 80px;
+            background: rgba(144, 238, 144, 0.7);
+            top: 80%;
+            left: 30%;
+        }
+        @keyframes move {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(50px, 50px) rotate(360deg);
+            }
+        }
+        .navbar.scrolled {
+            background: rgba(6, 49, 74, 0.9); /* خلفية شبه شفافة */
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+        }
     </style>
 </head>
 <body>
-    <div class="background-shapes">
+    <div class="background-shapes"></div>
         <img src="BDL.png" alt="Background Shape" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0;"> <!-- إخفاء الصورة الأصلية -->
         <div class="rotating-background"></div> <!-- إضافة عنصر جديد للخلفية المتكررة -->
+        <div class="moving-shape shape1"></div>
+        <div class="moving-shape shape2"></div>
+        <div class="moving-shape shape3"></div>
     </div>
     <!-- شريط التنقل -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -109,10 +234,38 @@
     <!-- الصفحة الرئيسية -->
     <section id="home" class="hero-section">
         <div>
-            <img src="BD.png" alt="Al Nour Logo" style="height: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 30px white);"> <!-- تكبير اللوجو وإضافة التوهج الأبيض -->
-            <h1 data-aos="fade-up" id="highlight-text" style="font-size: 4rem; font-weight: bold;">Al Nour Group</h1> <!-- تكبير النص وجعل الخط بولد -->
-            <p data-aos="fade-up" data-aos-delay="100" style="font-size: 2rem; font-weight: bold;">مرحباً بكم في الموقع الإلكتروني لشركة النور جروب مصر، أول شركة سمارت لبناء وتشيد وتشطيب من الصفر في مصر</p> <!-- تكبير النص وجعل الخط بولد -->
-            <p data-aos="fade-up" data-aos-delay="200" style="font-size: 2rem; font-weight: bold;">نعمل علي تغير مفهوم التشطيبات و البناء</p> <!-- تكبير النص وجعل الخط بولد -->
+            <img src="BD.png" alt="Al Nour Logo" style="height: 120px; margin-bottom: 15px; filter: drop-shadow(0 0 20px white);"> <!-- تصغير اللوجو -->
+            <h1 data-aos="fade-up" id="highlight-text" style="font-size: 3rem; font-weight: bold;">Al Nour Group</h1> <!-- تقليل حجم النص -->
+            <p data-aos="fade-up" data-aos-delay="100" style="font-size: 1.5rem; font-weight: bold;">مرحباً بكم في الموقع الإلكتروني لشركة النور جروب مصر</p> <!-- تقليل حجم النص -->
+            <a href="#services" class="btn btn-primary mt-3" data-aos="fade-up" data-aos-delay="200">اكتشف خدماتنا</a>
+        </div>
+    </section>
+
+    <!-- قسم لماذا نحن -->
+    <section id="why-us" style="background: linear-gradient(135deg, #084c61, #06314a);">
+        <div class="container">
+            <h2 data-aos="fade-up" style="color: #f58d1f;">لماذا نحن؟</h2>
+            <p data-aos="fade-up" data-aos-delay="100" style="color: #fff; font-size: 1.2rem;">نحن نقدم حلولاً شاملة ومتكاملة في مجال البناء والتشطيب، مع التركيز على الجودة، الابتكار، والالتزام بالمواعيد.</p>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <h3>الجودة والابتكار</h3>
+                        <p>نستخدم أفضل المواد وأحدث التقنيات لضمان تقديم أعلى مستويات الجودة.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <h3>الخبرة الطويلة</h3>
+                        <p>لدينا فريق عمل ذو خبرة واسعة في مجال البناء والتشطيب لضمان تحقيق أفضل النتائج.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <h3>الالتزام بالمواعيد</h3>
+                        <p>نحرص على تسليم المشاريع في الوقت المحدد مع الالتزام بالجدول الزمني المتفق عليه.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -135,6 +288,80 @@
         <div class="container text-center">
             <h2 data-aos="fade-up" class="text-light">عن الشركة</h2> <!-- إضافة text-light -->
             <p data-aos="fade-up" data-aos-delay="200" class="text-light">في عام  2005 , تأسست مجموعة النور بأستراتيجية عمل واضحه لأختراق سوق العمل وهو توريدات مواد البناء   و أدت الشركة بفضل الله تعالي نجاحاً باهر  و بعد هذا النجاح قرر رؤساء مجلس الإدارة التوسع في مجال البناء و التشطيب  ليتم إضافة أقسام  جديده وهي  توريد مواد البناء لمشاريع انشاء الكباري و الطرق ومدهم بكل الازم من رمل و سن و حديد و اسمنت و تم تعاقد الشركة مع جمعيات خيريه لأنشاء المساجد و تشطيب المساجد علي اكمل وجه و لم تنتهي رحلة نجاح النور جروب هنا بل قامو بتطوير الشركة لأضافة  أقسام جديده وهي   أدوات السباكة  وأدوات الكهرباء و التعاقد مع افضل الشركات الرائدة في المجال وبعد أداء اكثر من 7 سنوات من نجاح باهر قامو بأضافة قسم جديد  وهو قسم الدهانات و أكسسوارات التشطيب حتي يتم اكمال خطة إنشاء و تطوير  و تشطيب المباني من الصفر حتي  الأكتمال و ذالك رغم كل الصعوبات مرت بها الشركة و التحديات من منافسين في نفس المجال و لاكن ادة الشركة افضل نتيجة و تحقيق المتطلبات الازمه وذالك تم الوصول إليه من خلال  توفيق الله  عز وجل ثم مساعدة عملاؤنا الأفاضل و ثقتهم بنا  و اليوم تتقدم شركة النور بخالص الشكر الي العملاء الأعزاء بمناسبة إتمام الشركة 20 عاما من خدمتكم شكرا لكم</p> <!-- إضافة text-light -->
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services">
+        <div class="container">
+            <h2 data-aos="fade-up">خدماتنا</h2>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <h3>التصميم الذكي</h3>
+                        <p>نقدم حلول تصميم مبتكرة باستخدام أحدث التقنيات لتلبية احتياجات عملائنا.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <h3>البناء المستدام</h3>
+                        <p>نستخدم مواد بناء صديقة للبيئة لضمان استدامة المشاريع على المدى الطويل.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <h3>إدارة المشاريع</h3>
+                        <p>نوفر خدمات إدارة المشاريع لضمان تنفيذها بكفاءة وفعالية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section id="features" style="background: linear-gradient(135deg, #084c61, #06314a);">
+        <div class="container">
+            <h2 data-aos="fade-up" style="color: #f58d1f;">مميزاتنا</h2>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <h3>الجودة العالية</h3>
+                        <p>نلتزم بأعلى معايير الجودة في جميع مراحل البناء والتشطيب لضمان رضا العملاء.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <h3>التقنيات الحديثة</h3>
+                        <p>نستخدم أحدث التقنيات في البناء والتشطيب لتقديم حلول مبتكرة وعصرية.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300"></div>
+                    <div class="service-card">
+                        <h3>التسليم في الوقت المحدد</h3>
+                        <p>نحرص على تسليم المشاريع في الوقت المحدد مع الالتزام بالجدول الزمني المتفق عليه.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <h3>التكلفة المناسبة</h3>
+                        <p>نوفر خدمات بناء وتشطيب بأسعار تنافسية تناسب جميع العملاء.</p>
+                    </div>
+                </div>
+                <div class "col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <h3>الخبرة الطويلة</h3>
+                        <p>لدينا فريق عمل ذو خبرة طويلة في مجال البناء والتشطيب لضمان تقديم أفضل النتائج.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <h3>الدعم المستمر</h3>
+                        <p>نقدم دعمًا مستمرًا لعملائنا حتى بعد الانتهاء من المشاريع لضمان رضاهم التام.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -174,21 +401,21 @@
                 <iframe 
                     src="https://maps.google.com/maps?q=Nxe4abeyy33c5pkh8&output=embed" 
                     width="100%" 
-                    height="300" 
+                    height="200" 
                     style="border:0; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-                <a href="https://maps.app.goo.gl/Nxe4abeyy33c5pkh8" target="_blank" class="btn btn-primary position-absolute top-50 start-50 translate-middle" style="font-size: 1.5rem; padding: 15px 30px;">
+                <a href="https://maps.app.goo.gl/Nxe4abeyy33c5pkh8" target="_blank" class="btn btn-primary position-absolute top-50 start-50 translate-middle" style="font-size: 1rem; padding: 10px 20px;">
                     فتح الموقع
                 </a>
             </div>
             <form id="whatsapp-form" data-aos="fade-up" data-aos-delay="200" class="text-center">
                 <div class="mb-3">
-                    <textarea id="message" class="form-control" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    <textarea id="message" class="form-control" rows="3" placeholder="اكتب رسالتك هنا..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary px-4">إرسال</button>
+                <button type="submit" class="btn btn-primary px-3">إرسال</button>
             </form>
         </div>
         <script>
@@ -208,7 +435,7 @@
     <!-- Footer -->
     <footer>
         <p>حقوق النشر &copy; 2025. جميع الحقوق محفوظه لدي شركة النور جروب.</p>
-        <a href="tel:+201008102097" class="me-3">
+        <a href="tel:+201008102097" class="me-3"></a>
             <img src="TEL.png" alt="اتصل بنا" style="width: 60px; height: 60px; background: none;"> <!-- تكبير الحجم -->
         </a>
         <a href="https://wa.me/201008102097" target="_blank" class="me-3">
@@ -226,7 +453,7 @@
         AOS.init();
         
         function confirmEmailRedirect() {
-            return confirm("سيتم تحويلك إلى تطبيق البريد الإلكتروني لإرسال الرسالة. هل تريد المتابعة؟");
+            return confirm("سيتم تحويلك إلى تطبيق الوتساب  هل ترغب في المتابعة؟");
         }
 
         function sendWhatsAppMessage() {

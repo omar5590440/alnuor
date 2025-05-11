@@ -1,17 +1,21 @@
 body {
     font-family: 'Tajawal', sans-serif;
     color: #fff;
-    background: linear-gradient(135deg, #06314a, #084c61); /* خلفية متدرجة */
+    background: #06314a; /* توحيد اللون الأزرق */
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    scroll-behavior: smooth; /* تحسين التمرير */
+    scroll-behavior: auto; /* إلغاء تحسين التمرير */
     position: relative; /* لجعل الخلفية تتحرك فوق الموقع */
     overflow: auto; /* إعادة تمكين التمرير */
+    overflow-x: hidden; /* منع التمرير الأفقي */
+    height: 100vh; /* جعل الصفحة تأخذ كامل ارتفاع الشاشة */
+    overflow-y: auto; /* إلغاء خاصية التمرير العمودي الإجباري */
+    scroll-snap-type: none; /* إلغاء خاصية التمرير السلس */
 }
 
 .navbar {
-    background: white; /* تغيير لون الخلفية إلى الأبيض */
+    background: #06314a; /* توحيد اللون الأزرق */
     background-image: linear-gradient(135deg, rgba(6, 49, 74, 0.2) 25%, transparent 25%, transparent 50%, rgba(6, 49, 74, 0.2) 50%, rgba(6, 49, 74, 0.2) 75%, transparent 75%, transparent); /* خطوط عشوائية */
     background-size: 40px 40px; /* حجم الخطوط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
@@ -71,12 +75,13 @@ body {
 
 .hero-section {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(6, 49, 74, 0.8), rgba(8, 76, 97, 0.8)), 
+    background: linear-gradient(135deg, rgba(6, 49, 74, 0.8), rgba(6, 49, 74, 0.8)), 
                 url('hero-image.jpg') no-repeat center center/cover; /* خلفية متدرجة مع صورة */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-size: cover; /* التأكد من أن الخلفية لا تتجاوز عرض الشاشة */
 }
 
 .hero-section h1 {
@@ -103,14 +108,14 @@ body {
 .card {
     border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #084c61; /* تحسين لون البطاقات */
+    background-color: #084c61; /* توحيد اللون الأزرق */
     border-radius: 10px; /* زوايا مستديرة */
 }
 
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px #ffbb0080;
-    background-color: #06314a; /* تغيير لون البطاقة عند التحويم */
+    background-color: #06314a; /* توحيد اللون الأزرق عند التحويم */
 }
 
 .card-title {
@@ -138,15 +143,15 @@ body {
 }
 
 footer {
-    background: linear-gradient(90deg, #06314a, #084c61); /* خلفية متدرجة */
-    padding: 20px 0;
-    text-align: center;
+    background: #06314a; /* توحيد اللون الأزرق */
+    padding: 40px 20px; /* مسافة داخلية */
+    text-align: center; /* توسيط النصوص */
     border-top: 2px solid #f58d1f; /* إضافة خط علوي */
 }
 
 footer p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem; /* حجم النص */
     color: #ddd;
 }
 
@@ -154,7 +159,7 @@ footer a {
     color: #f58d1f; /* تحديث اللون */
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem; /* حجم النص */
     transition: color 0.3s ease;
 }
 
@@ -217,6 +222,7 @@ footer a:hover {
     height: 100px;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير الانتقال */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* إضافة ظل */
 }
 
 #partners img:hover {
@@ -232,6 +238,7 @@ footer a:hover {
     height: 100%;
     z-index: -1; /* خلف المحتوى */
     overflow: hidden;
+    background: #06314a; /* توحيد اللون الأزرق */
 }
 
 .shape {
@@ -334,11 +341,12 @@ footer a:hover {
     width: 100%;
     height: 100%;
     background-image: url('BDL.png'); /* استخدام الصورة */
-    background-size: 50px 50px; /* تصغير حجم الصورة */
+    background-size: contain; /* التأكد من أن الخلفية لا تتجاوز عرض الشاشة */
     background-repeat: repeat; /* تكرار الصورة */
     z-index: -1; /* خلف المحتوى */
     animation: rotateBackground 20s linear infinite; /* جعل الخلفية تدور */
     filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%); /* تغيير اللون إلى #767676 */
+    background-color: #06314a; /* توحيد اللون الأزرق */
 }
 
 @keyframes rotateBackground {
@@ -351,8 +359,8 @@ footer a:hover {
 }
 
 .product-btn {
-    background-color: #fff; /* خلفية بيضاء */
-    color: #f58d1f; /* الكتابة باللون البرتقالي */
+    background-color: #06314a; /* توحيد اللون الأزرق */
+    color: #fff; /* النص باللون الأبيض */
     border: 2px solid #f58d1f; /* إطار برتقالي */
     padding: 15px 30px; /* مسافة داخلية أكبر */
     font-size: 1.2rem; /* حجم النص أكبر */
@@ -364,8 +372,237 @@ footer a:hover {
 }
 
 .product-btn:hover {
-    background-color: #084c61; /* خلفية زرقاء عند التمرير */
+    background-color: #084c61; /* لون أزرق أفتح عند التحويم */
     color: #fff; /* الكتابة باللون الأبيض */
     border-color: #084c61; /* تغيير لون الإطار */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التمرير */
+}
+
+/* إزالة الأنماط المتعلقة بشريط التنقل السفلي */
+.navbar-bottom {
+    display: none; /* إخفاء شريط التنقل السفلي */
+}
+
+/* إزالة الأنماط المتعلقة بشريط التنقل الجانبي */
+.navbar-left, .sidebar {
+    display: none; /* إخفاء شريط التنقل الجانبي */
+}
+
+/* التأكد من أن جميع العناصر لا تتجاوز عرض الشاشة */
+.container, .row, .col-12, .col {
+    max-width: 100%; /* منع تجاوز العرض */
+    overflow-x: hidden; /* منع التمرير الأفقي */
+}
+
+/* التأكد من أن جميع العناصر داخل الصفحة لا تتجاوز عرض الشاشة */
+* {
+    box-sizing: border-box; /* التأكد من أن الحواف والحشوات لا تؤثر على العرض */
+    max-width: 100%; /* منع تجاوز العرض */
+}
+
+section {
+    height: auto; /* إلغاء إجبار الأقسام على أخذ كامل ارتفاع الشاشة */
+    scroll-snap-align: none; /* إلغاء محاذاة الأقسام عند التمرير */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px; /* زيادة المسافة الداخلية */
+    text-align: center; /* توسيط النصوص */
+}
+
+/* تصميم قسم الخدمات */
+#services {
+    background: #084c61; /* خلفية زرقاء داكنة */
+    color: #fff; /* النص باللون الأبيض */
+}
+
+#services h2 {
+    font-size: 2.5rem; /* حجم النص */
+    margin-bottom: 20px; /* مسافة أسفل العنوان */
+    color: #f58d1f; /* لون برتقالي */
+}
+
+#services .service-card {
+    background: #06314a; /* خلفية زرقاء داكنة */
+    border-radius: 10px; /* زوايا مستديرة */
+    padding: 20px; /* مسافة داخلية */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير عند التحويم */
+}
+
+#services .service-card:hover {
+    transform: translateY(-10px); /* رفع البطاقة */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+}
+
+#services .service-card h3 {
+    font-size: 1.5rem; /* حجم النص */
+    color: #f58d1f; /* لون برتقالي */
+    margin-bottom: 10px; /* مسافة أسفل العنوان */
+}
+
+#services .service-card p {
+    font-size: 1rem; /* حجم النص */
+    color: #ddd; /* لون رمادي */
+    line-height: 1.6; /* ارتفاع السطر */
+}
+
+/* تحسين تصميم قسم لماذا نحن */
+#why-us {
+    padding: 80px 20px; /* مسافة داخلية */
+    text-align: center; /* توسيط النصوص */
+}
+
+#why-us h2 {
+    font-size: 2.5rem; /* حجم النص */
+    margin-bottom: 20px; /* مسافة أسفل العنوان */
+    color: #f58d1f; /* لون برتقالي */
+}
+
+#why-us p {
+    font-size: 1.2rem; /* حجم النص */
+    color: #ddd; /* لون رمادي */
+    line-height: 1.8; /* ارتفاع السطر */
+    margin-bottom: 40px; /* مسافة أسفل النص */
+}
+
+#why-us .service-card {
+    background: #06314a; /* خلفية زرقاء داكنة */
+    border-radius: 10px; /* زوايا مستديرة */
+    padding: 20px; /* مسافة داخلية */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير عند التحويم */
+}
+
+#why-us .service-card:hover {
+    transform: translateY(-10px); /* رفع البطاقة */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+}
+
+#why-us .service-card h3 {
+    font-size: 1.5rem; /* حجم النص */
+    color: #f58d1f; /* لون برتقالي */
+    margin-bottom: 10px; /* مسافة أسفل العنوان */
+}
+
+#why-us .service-card p {
+    font-size: 1rem; /* حجم النص */
+    color: #ddd; /* لون رمادي */
+    line-height: 1.6; /* ارتفاع السطر */
+}
+
+/* تحسين تصميم الأزرار */
+.btn-primary {
+    background: #f58d1f; /* لون برتقالي */
+    color: #fff; /* النص باللون الأبيض */
+    border: none; /* إزالة الحدود */
+    padding: 10px 20px; /* مسافة داخلية */
+    font-size: 1.2rem; /* حجم النص */
+    border-radius: 5px; /* زوايا مستديرة */
+    transition: background 0.3s ease, transform 0.3s ease; /* تأثير عند التحويم */
+}
+
+.btn-primary:hover {
+    background: #d9771f; /* لون برتقالي داكن */
+    transform: scale(1.1); /* تكبير الزر */
+}
+
+/* تصميم قسم المميزات */
+#features {
+    padding: 80px 20px; /* مسافة داخلية */
+    text-align: center; /* توسيط النصوص */
+}
+
+#features h2 {
+    font-size: 2.5rem; /* حجم النص */
+    margin-bottom: 20px; /* مسافة أسفل العنوان */
+    color: #f58d1f; /* لون برتقالي */
+}
+
+#features .service-card {
+    background: #06314a; /* خلفية زرقاء داكنة */
+    border-radius: 10px; /* زوايا مستديرة */
+    padding: 20px; /* مسافة داخلية */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير عند التحويم */
+}
+
+#features .service-card:hover {
+    transform: translateY(-10px); /* رفع البطاقة */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* زيادة الظل */
+}
+
+#features .service-card h3 {
+    font-size: 1.5rem; /* حجم النص */
+    color: #f58d1f; /* لون برتقالي */
+    margin-bottom: 10px; /* مسافة أسفل العنوان */
+}
+
+#features .service-card p {
+    font-size: 1rem; /* حجم النص */
+    color: #ddd; /* لون رمادي */
+    line-height: 1.6; /* ارتفاع السطر */
+}
+
+/* تحسينات للهواتف المحمولة */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* تصغير حجم النص */
+    }
+
+    .navbar {
+        padding: 10px; /* تقليل الحشوة */
+    }
+
+    .navbar-brand img {
+        height: 40px; /* تصغير حجم الشعار */
+    }
+
+    .hero-section {
+        height: auto; /* السماح بارتفاع تلقائي */
+        padding: 20px; /* إضافة مسافة داخلية */
+        text-align: center; /* توسيط النصوص */
+    }
+
+    .hero-section h1 {
+        font-size: 2rem; /* تقليل حجم النص */
+    }
+
+    .hero-section p {
+        font-size: 1rem; /* تقليل حجم النص */
+    }
+
+    .btn-primary {
+        font-size: 1rem; /* تصغير حجم النص في الأزرار */
+        padding: 10px 15px; /* تقليل الحشوة */
+    }
+
+    section {
+        padding: 40px 10px; /* تقليل المسافة الداخلية */
+    }
+
+    #services .service-card,
+    #features .service-card,
+    #why-us .service-card {
+        padding: 15px; /* تقليل الحشوة */
+        font-size: 0.9rem; /* تصغير النصوص */
+    }
+
+    #partners img {
+        width: 80px; /* تصغير حجم الصور */
+        height: 80px;
+    }
+
+    footer {
+        font-size: 0.8rem; /* تصغير النصوص في الفوتر */
+    }
+
+    footer a img {
+        width: 40px; /* تصغير حجم الأيقونات */
+        height: 40px;
+    }
+
+    iframe {
+        height: 200px; /* تصغير ارتفاع الخريطة */
+    }
 }

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كاتلوج المنتجات - النور جروب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .catalog-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .catalog-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #185a9d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+            border: 1px solid #e3eafc;
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 24px #b3c6f7;
+            border-color: #1976d2;
+            transform: translateY(-6px) scale(1.03);
+        }
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #f7faff;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+        .product-desc {
+            font-size: 1rem;
+            color: #185a9d;
+            margin-bottom: 10px;
+        }
+        .admin-section {
+            max-width: 400px;
+            margin: 30px auto 0 auto;
+            background: #f7faff;
+            border: 1px solid #e3eafc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .admin-section input, .admin-section textarea {
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #b3c6f7;
+            font-family: 'Cairo', Arial, sans-serif;
+            font-size: 1rem;
+        }
+        .admin-section button {
+            background: linear-gradient(90deg, #1976d2 0%, #0d47a1 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .admin-section button:hover {
+            background: #fff;
+            color: #0d47a1;
+            border: 1px solid #1976d2;
+        }
+        .admin-section label {
+            display: block;
+            text-align: right;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: #185a9d;
+        }
+        .admin-section .error {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 800px) {
+            .products-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-card {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="#catalog" class="active">كاتلوج المنتجات</a>
+        </nav>
+    </header>
+    <div class="catalog-container">
+        <div class="catalog-title">كاتلوج المنتجات</div>
+        <div id="admin-area" class="admin-section">
+            <form id="password-form">
+                <label for="admin-password">أدخل الرقم السري لإضافة منتج:</label>
+                <input type="password" id="admin-password" autocomplete="off" required>
+                <button type="submit">دخول</button>
+                <div class="error" id="password-error" style="display:none;"></div>
+            </form>
+            <form id="add-product-form" style="display:none;" enctype="multipart/form-data">
+                <label for="product-title">اسم المنتج</label>
+                <input type="text" id="product-title" required>
+                <label for="product-desc">وصف المنتج</label>
+                <textarea id="product-desc" rows="2" required></textarea>
+                <label for="product-image">صورة المنتج</label>
+                <input type="file" id="product-image" accept="image/*" required>
+                <div id="image-preview-container" style="margin-bottom:12px;display:none;">
+                    <img id="image-preview" src="" alt="معاينة الصورة" style="max-width:100%;max-height:220px;border-radius:8px;box-shadow:0 2px 8px #b3c6f7;">
+                </div>
+                <button type="submit">إضافة المنتج</button>
+            </form>
+        </div>
+        <div class="products-grid" id="products-list">
+            <!-- المنتجات ستظهر هنا -->
+        </div>
+        <!-- نافذة تكبير الصورة -->
+        <div id="image-modal" style="display:none; position:fixed; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:1000;">
+            <span id="close-modal" style="position:absolute;top:30px;left:40px;font-size:2.5rem;color:#fff;cursor:pointer;font-weight:bold;">&times;</span>
+            <img id="modal-img" src="" alt="صورة المنتج" style="max-width:90vw;max-height:80vh;border-radius:12px;box-shadow:0 4px 32px #000;">
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 النور جروب. جميع الحقوق محفوظة.
+    </footer>
+    <script>
+    const passwordForm = document.getElementById('password-form');
+    const addProductForm = document.getElementById('add-product-form');
+    const passwordInput = document.getElementById('admin-password');
+    const passwordError = document.getElementById('password-error');
+    const productsList = document.getElementById('products-list');
+
+// معاينة الصورة قبل الإضافة
+const imageInput = document.getElementById('product-image');
+const imagePreviewContainer = document.getElementById('image-preview-container');
+const imagePreview = document.getElementById('image-preview');
+imageInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreviewContainer.style.display = 'block';
+        };
+        reader.readAsDataURL(this.files[0]);
+    } else {
+        imagePreview.src = '';
+        imagePreviewContainer.style.display = 'none';
+    }
+});
+
+    // جلب المنتجات من السيرفر وعرضها
+    function fetchProducts() {
+        fetch('http://localhost:3000/api/products')
+            .then(res => res.json())
+            .then(products => {
+                productsList.innerHTML = '';
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <img src="http://localhost:3000${product.image}" alt="${product.title}" class="product-image">
+                        <div class="product-title">${product.title}</div>
+                        <div class="product-desc">${product.desc}</div>
+                    `;
+                    productsList.appendChild(card);
+                });
+            });
+    }
+    fetchProducts();
+
+    passwordForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (passwordInput.value === '5590') { // تم تغيير الرقم السري هنا
+            passwordForm.style.display = 'none';
+            addProductForm.style.display = 'block';
+            passwordError.style.display = 'none';
+        } else {
+            passwordError.textContent = 'الرقم السري غير صحيح!';
+            passwordError.style.display = 'block';
+        }
+        passwordInput.value = '';
+    });
+
+    addProductForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const title = document.getElementById('product-title').value.trim();
+        const desc = document.getElementById('product-desc').value.trim();
+        const imageInput = document.getElementById('product-image');
+        if (!imageInput.files[0]) return;
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('desc', desc);
+        formData.append('image', imageInput.files[0]);
+
+        fetch('http://localhost:3000/api/products', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(product => {
+            addProductForm.reset();
+            imagePreview.src = '';
+            imagePreviewContainer.style.display = 'none';
+            fetchProducts(); // إعادة تحميل المنتجات لعرض المنتج والصورة فوراً
+        });
+    });
+
+    // تكبير الصورة عند الضغط عليها
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('product-image')) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = e.target.src;
+            modal.style.display = 'flex';
+        }
+        if (e.target.id === 'close-modal' || e.target.id === 'image-modal') {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-img').src = '';
+        }
+    });
+    </script>
+</body>
+</html>
+
+<!--
+لا يمكن إعطاء صلاحيات للسيرفر من خلال كود HTML أو JavaScript في الواجهة الأمامية.
+الصلاحيات تُحدد من نظام التشغيل (ويندوز) أو إعدادات السيرفر نفسه.
+اتبع الخطوات التالية لإعطاء صلاحيات كاملة لمجلد المشروع على ويندوز:
+
+1. اذهب إلى مجلد f:\wep omar في مستكشف الملفات (File Explorer).
+2. اضغط بزر الفأرة الأيمن على المجلد واختر "خصائص" (Properties).
+3. انتقل إلى تبويب "الأمان" (Security).
+4. اضغط على "تحرير" (Edit).
+5. اختر المستخدم "Everyone" أو المستخدم الذي يشغل السيرفر.
+6. فعّل جميع الخيارات تحت "السماح" (Allow) خاصة "التحكم الكامل" (Full control).
+7. اضغط موافق (OK) لحفظ التغييرات.
+
+الآن للسيرفر صلاحية القراءة والكتابة والتعديل على جميع الملفات داخل المجلد.
+إذا كنت تستخدم استضافة خارجية، يجب ضبط الصلاحيات من لوحة تحكم الاستضافة أو التواصل مع الدعم الفني.
+-->
